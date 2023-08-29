@@ -6,9 +6,6 @@ using UnityEngine;
 public class XmlIngameEditor : MonoBehaviour
 {
     [SerializeField]
-    ///<param name="path"> path to save xml profiles, under Resources/Xmls </param>
-    string path;
-    [SerializeField]
     RuntimeXmlLoader loader;
     [SerializeField]
     TMP_InputField inputField;

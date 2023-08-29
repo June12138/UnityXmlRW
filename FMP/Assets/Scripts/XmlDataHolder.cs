@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class XmlDataHolder
 {
-    //xml document folder location of the current environment
+    //xml document folder location of the current environment. By default, this is set to Application.dataPath + "/Resources/Xmls/"
     public string environmentLocation;
     public XEHolder xmlRoot;
     public string path;

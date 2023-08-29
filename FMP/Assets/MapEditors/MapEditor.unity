@@ -1115,8 +1115,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1136089136}
   - component: {fileID: 1136089135}
-  - component: {fileID: 1136089137}
   - component: {fileID: 1136089138}
+  - component: {fileID: 1136089137}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -1136,8 +1136,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d56a9373266bc6549980f1c810ec3a84, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  path: FormationPresets/
-  loader: {fileID: 1136089138}
+  loader: {fileID: 1136089137}
   inputField: {fileID: 2009383040}
   dropDown: {fileID: 1513749791}
   gameObjects:
@@ -1169,10 +1168,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1136089134}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1a6df42397738604d9b648e35b2258f3, type: 3}
+  m_Script: {fileID: 11500000, guid: e36a5a9d5464ce04bbfce4945df1c32e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  path: FormationPresets/
+  path: FormationPresets2/
 --- !u!114 &1136089138
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1182,10 +1181,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1136089134}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e36a5a9d5464ce04bbfce4945df1c32e, type: 3}
+  m_Script: {fileID: 11500000, guid: 14ab1d10fe639c54f838ef006af96e79, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  path: FormationPresets2/
+  path: FormationPresets/
 --- !u!1 &1202513517
 GameObject:
   m_ObjectHideFlags: 0
