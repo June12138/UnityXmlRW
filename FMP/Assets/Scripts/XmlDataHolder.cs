@@ -2,7 +2,7 @@ using System.Xml.Linq;
 using System.Collections.Generic;
 using UnityEngine;
 
-class XmlDataHolder
+public class XmlDataHolder
 {
     //xml document folder location of the current environment
     public string environmentLocation;

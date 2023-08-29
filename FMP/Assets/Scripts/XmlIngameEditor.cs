@@ -8,6 +8,7 @@ public class XmlIngameEditor : MonoBehaviour
     [SerializeField]
     ///<param name="path"> path to save xml profiles, under Resources/Xmls </param>
     string path;
+    [SerializeField]
     RuntimeXmlLoader loader;
     [SerializeField]
     TMP_InputField inputField;
@@ -17,18 +18,17 @@ public class XmlIngameEditor : MonoBehaviour
     public List<GameObject> gameObjects = new List<GameObject>();
     public virtual void Start()
     {
-        loader = new RuntimeXmlLoader(gameObjects, path);
         RefreshDropdown();
         dropDown.onValueChanged.AddListener(UpdateInputField);
     }
     public void SaveButton()
     {
-        loader.SaveData(inputField.text);
+        loader.SaveData(gameObjects, inputField.text);
         RefreshDropdown();
     }
     public void LoadButton()
     {
-        loader.LoadData(dropDown.options[dropDown.value].text);
+        loader.LoadData(gameObjects, dropDown.options[dropDown.value].text);
     }
     void RefreshDropdown()
     {

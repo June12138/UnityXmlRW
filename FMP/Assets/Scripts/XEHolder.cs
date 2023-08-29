@@ -2,7 +2,7 @@
 using System.Linq;
 using System.Xml.Linq;
 
-class XEHolder : XElement
+public class XEHolder : XElement
 {
     ///<override> parent functions
     public XEHolder(XElement other) : base(other) { }

@@ -465,8 +465,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_Father: {fileID: 1136089136}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &705507993
 GameObject:
@@ -659,7 +659,7 @@ RectTransform:
   - {fileID: 2088685703}
   - {fileID: 1513749790}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -943,7 +943,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &963194225
 GameObject:
@@ -1115,6 +1115,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1136089136}
   - component: {fileID: 1136089135}
+  - component: {fileID: 1136089137}
+  - component: {fileID: 1136089138}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -1135,6 +1137,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   path: FormationPresets/
+  loader: {fileID: 1136089138}
   inputField: {fileID: 2009383040}
   dropDown: {fileID: 1513749791}
   gameObjects:
@@ -1153,9 +1156,36 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1541456904}
+  - {fileID: 691334460}
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1136089137
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1136089134}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a6df42397738604d9b648e35b2258f3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  path: FormationPresets/
+--- !u!114 &1136089138
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1136089134}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e36a5a9d5464ce04bbfce4945df1c32e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  path: FormationPresets2/
 --- !u!1 &1202513517
 GameObject:
   m_ObjectHideFlags: 0

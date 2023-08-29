@@ -2,17 +2,15 @@
 using System.Xml.Linq;
 using UnityEngine;
 
-class RuntimeXmlLoader
+public class RuntimeXmlLoader : MonoBehaviour
 {
     public string path;
-    XmlDataHolder xmlHolder;
-    List<GameObject> gameObjects;
-    public RuntimeXmlLoader(List<GameObject> objects, string savePath = "")
+    public XmlDataHolder xmlHolder;
+    public RuntimeXmlLoader(string savePath = "")
     {
-        gameObjects = objects;
         path = savePath;
     }
-    public void SaveData(string name)
+    public void SaveData(List<GameObject> gameObjects, string name)
     {
         if (name == "") return;
         xmlHolder = new XmlDataHolder(Path(name), true);
@@ -40,7 +38,7 @@ class RuntimeXmlLoader
         el.Element("transform").Element("rotation").SetAttributeValue("y", gameObject.transform.localRotation.eulerAngles.y);
         xmlHolder.xmlRoot.Add(el);
     }
-    public void LoadData(string name)
+    public void LoadData(List<GameObject> gameObjects, string name)
     {
         if (name == "") return;
         xmlHolder = new XmlDataHolder(Path(name));
