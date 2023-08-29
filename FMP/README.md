@@ -1,0 +1,3 @@
+unity的xml读取存储方案
+
+MapEditor里面是一个简单的示例，其功能为保存并读取GameManager/XmlIngameEditor/gameObjects中指定的所有场景元素的x,z坐标和y旋转轴

@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xml>
+  <character id="l1">
+    <transform>
+      <position x="-1.36" z="0.22" />
+      <rotation y="50.8728256" />
+    </transform>
+  </character>
+  <character id="l2">
+    <transform>
+      <position x="2" z="0" />
+      <rotation y="308.045166" />
+    </transform>
+  </character>
+</xml>
