@@ -27,7 +27,14 @@ public class XmlIngameEditor : MonoBehaviour
     }
     public void LoadButton()
     {
-        loader.LoadData(dropDown.options[dropDown.value].text, true);
+        List<XmlAnnotation> loadObjects = loader.LoadData(dropDown.options[dropDown.value].text, true);
+        foreach (XmlAnnotation anno in loadObjects)
+        {
+            if (!saveObjects.Contains(anno))
+            {
+                saveObjects.Add(anno);
+            }
+        }
     }
     void RefreshDropdown()
     {
@@ -50,6 +57,7 @@ public class XmlIngameEditor : MonoBehaviour
     }
     public void Generate()
     {
-        Instantiate(Resources.Load("Prefabs/" + generateInputField.text.ToString()));
+        GameObject instance = Instantiate(Resources.Load("Prefabs/" + generateInputField.text.ToString())) as GameObject;
+        saveObjects.Add(instance.GetComponent<XmlAnnotation>());
     }
 }

@@ -5,21 +5,21 @@ using UnityEngine;
 //this template saves all positional information but no rotational information
 public class XYPositionYRotationTemplate : RuntimeXmlLoader
 {
-    public override void SaveEntry(XmlAnnotation entry)
+    public override XEHolder SaveEntry(XmlAnnotation entry)
     {
         //editing xml elements of a character
-        XEHolder el =
-        new XEHolder("character", new XAttribute("id", entry.key), new XAttribute("prefab", entry.prefab),
-            new XEHolder("position"),
-            new XEHolder("rotation")
-        );
+        XEHolder el = base.SaveEntry(entry);
+        el.Name = "character";
+        el.Add(new XEHolder("position"));
+        el.Add(new XEHolder("rotation"));
         el.Element("position").SetAttributeValue("x", entry.transform.localPosition.x);
         el.Element("position").SetAttributeValue("z", entry.transform.localPosition.z);
         el.Element("rotation").SetAttributeValue("y", entry.transform.localRotation.eulerAngles.y);
-        xmlHolder.xmlRoot.Add(el);
+        return el;
     }
     public override void LoadEntry(XmlAnnotation entry)
     {
+        base.LoadEntry(entry);
         XEHolder position = xmlHolder.FindFirst("id", entry.key).Element("position");
         XEHolder rotation = xmlHolder.FindFirst("id", entry.key).Element("rotation");
         float x = position.FAttribute("x");

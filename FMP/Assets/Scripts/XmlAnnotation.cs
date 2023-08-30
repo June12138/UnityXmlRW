@@ -19,7 +19,6 @@ public class XmlAnnotation : MonoBehaviour
         {
             key += GenerateDigit();
         }
-        Debug.Log(GenerateDigit());
         char GenerateDigit()
         {
             int rnd;

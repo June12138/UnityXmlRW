@@ -17,32 +17,38 @@ public class RuntimeXmlLoader : MonoBehaviour
         xmlHolder.ClearData();
         foreach (XmlAnnotation entry in entries)
         {
-            SaveEntry(entry);
+            xmlHolder.xmlRoot.Add(SaveEntry(entry));
         }
         xmlHolder.Save();
         Debug.Log("data saved at " + xmlHolder.path);
     }
     ///<summary>how should specific xml elements be saved to .xml file</summary>
-    public virtual void SaveEntry(XmlAnnotation gameObject)
+    public virtual XEHolder SaveEntry(XmlAnnotation entry)
     {
         //edit xml elements of a game object
+        return new XEHolder("entry", new XAttribute("id", entry.key), new XAttribute("prefab", entry.prefab));
     }
-    public virtual void LoadData(string name, bool autoCreate = false)
+    public virtual List<XmlAnnotation> LoadData(string name, bool autoCreate = false)
     {
-        if (name == "") return;
+        List<XmlAnnotation> list = new List<XmlAnnotation>();
+        if (name == "") return list;
         xmlHolder = new XmlDataHolder(Path(name));
         foreach (XEHolder el in xmlHolder.xmlRoot.Elements())
         {
             XmlAnnotation entry = FindByID(el.SAttribute("id"));
             if (entry != null)
             {
+                list.Add(entry);
                 LoadEntry(entry);
             }
             else if (autoCreate)
             {
-                LoadEntry(GenerateFromEntry(el));
+                entry = GenerateFromEntry(el);
+                list.Add(entry);
+                LoadEntry(entry);
             }
         }
+        return list;
     }
     XmlAnnotation FindByID(string id)
     {
@@ -61,12 +67,11 @@ public class RuntimeXmlLoader : MonoBehaviour
         GameObject instance = Instantiate(Resources.Load(entry.SAttribute("prefab"))) as GameObject;
         XmlAnnotation output = instance.GetComponent<XmlAnnotation>();
         output.key = entry.SAttribute("id");
-        output.prefab = entry.SAttribute("prefab");
         return output;
     }
     public virtual void LoadEntry(XmlAnnotation entry)
     {
-
+        entry.prefab = xmlHolder.FindFirst("id", entry.key).SAttribute("prefab");
     }
     public virtual string Path(string name)
     {
