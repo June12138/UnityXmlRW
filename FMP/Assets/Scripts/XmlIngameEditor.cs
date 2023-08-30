@@ -8,11 +8,13 @@ public class XmlIngameEditor : MonoBehaviour
     [SerializeField]
     RuntimeXmlLoader loader;
     [SerializeField]
-    TMP_InputField inputField;
+    TMP_InputField saveInputField;
+    [SerializeField]
+    TMP_InputField generateInputField;
     [SerializeField]
     TMP_Dropdown dropDown;
     /// <summary>list of game objects to be stored in the .xml file</summary>
-    public List<GameObject> gameObjects = new List<GameObject>();
+    public List<XmlAnnotation> saveObjects = new List<XmlAnnotation>();
     public virtual void Start()
     {
         RefreshDropdown();
@@ -20,12 +22,12 @@ public class XmlIngameEditor : MonoBehaviour
     }
     public void SaveButton()
     {
-        loader.SaveData(gameObjects, inputField.text);
+        loader.SaveData(saveObjects, saveInputField.text);
         RefreshDropdown();
     }
     public void LoadButton()
     {
-        loader.LoadData(gameObjects, dropDown.options[dropDown.value].text);
+        loader.LoadData(dropDown.options[dropDown.value].text, true);
     }
     void RefreshDropdown()
     {
@@ -44,6 +46,10 @@ public class XmlIngameEditor : MonoBehaviour
     }
     public void UpdateInputField(int value)
     {
-        inputField.text = dropDown.options[value].text;
+        saveInputField.text = dropDown.options[value].text;
+    }
+    public void Generate()
+    {
+        Instantiate(Resources.Load("Prefabs/" + generateInputField.text.ToString()));
     }
 }

@@ -10,34 +10,61 @@ public class RuntimeXmlLoader : MonoBehaviour
     {
         path = savePath;
     }
-    public virtual void SaveData(List<GameObject> gameObjects, string name)
+    public virtual void SaveData(List<XmlAnnotation> entries, string name)
     {
         if (name == "") return;
         xmlHolder = new XmlDataHolder(Path(name), true);
         xmlHolder.ClearData();
-        foreach (GameObject gameObject in gameObjects)
+        foreach (XmlAnnotation entry in entries)
         {
-            SaveEntry(gameObject);
+            SaveEntry(entry);
         }
         xmlHolder.Save();
         Debug.Log("data saved at " + xmlHolder.path);
     }
     ///<summary>how should specific xml elements be saved to .xml file</summary>
-    public virtual void SaveEntry(GameObject gameObject)
+    public virtual void SaveEntry(XmlAnnotation gameObject)
     {
         //edit xml elements of a game object
     }
-    public virtual void LoadData(List<GameObject> gameObjects, string name)
+    public virtual void LoadData(string name, bool autoCreate = false)
     {
         if (name == "") return;
         xmlHolder = new XmlDataHolder(Path(name));
-        foreach (GameObject gameObject in gameObjects)
+        foreach (XEHolder el in xmlHolder.xmlRoot.Elements())
         {
-            LoadEntry(gameObject);
+            XmlAnnotation entry = FindByID(el.SAttribute("id"));
+            if (entry != null)
+            {
+                LoadEntry(entry);
+            }
+            else if (autoCreate)
+            {
+                LoadEntry(GenerateFromEntry(el));
+            }
         }
-        Debug.Log("data loaded from " + xmlHolder.path);
     }
-    public virtual void LoadEntry(GameObject gameObject)
+    XmlAnnotation FindByID(string id)
+    {
+        XmlAnnotation[] annotations = GameObject.FindObjectsOfType<XmlAnnotation>();
+        foreach (XmlAnnotation annotation in annotations)
+        {
+            if (annotation.key == id)
+            {
+                return annotation;
+            }
+        }
+        return null;
+    }
+    XmlAnnotation GenerateFromEntry(XEHolder entry)
+    {
+        GameObject instance = Instantiate(Resources.Load(entry.SAttribute("prefab"))) as GameObject;
+        XmlAnnotation output = instance.GetComponent<XmlAnnotation>();
+        output.key = entry.SAttribute("id");
+        output.prefab = entry.SAttribute("prefab");
+        return output;
+    }
+    public virtual void LoadEntry(XmlAnnotation entry)
     {
 
     }
