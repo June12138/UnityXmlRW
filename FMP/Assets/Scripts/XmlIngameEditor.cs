@@ -35,6 +35,20 @@ public class XmlIngameEditor : MonoBehaviour
                 saveObjects.Add(anno);
             }
         }
+        //clean unrecorded objects
+        List<XmlAnnotation> destroyList = new List<XmlAnnotation>();
+        foreach (XmlAnnotation anno in saveObjects)
+        {
+            if (!loadObjects.Contains(anno))
+            {
+                destroyList.Add(anno);
+            }
+        }
+        foreach (XmlAnnotation anno in destroyList)
+        {
+            GameObject.Destroy(anno.gameObject);
+            saveObjects.Remove(anno);
+        }
     }
     void RefreshDropdown()
     {

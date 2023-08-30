@@ -26,7 +26,7 @@ public class RuntimeXmlLoader : MonoBehaviour
     public virtual XEHolder SaveEntry(XmlAnnotation entry)
     {
         //edit xml elements of a game object
-        return new XEHolder("entry", new XAttribute("id", entry.key), new XAttribute("prefab", entry.prefab));
+        return new XEHolder("entry", new XAttribute("id", entry.key), new XAttribute("name", entry.gameObject.name), new XAttribute("prefab", entry.prefab));
     }
     public virtual List<XmlAnnotation> LoadData(string name, bool autoCreate = false)
     {
@@ -71,7 +71,9 @@ public class RuntimeXmlLoader : MonoBehaviour
     }
     public virtual void LoadEntry(XmlAnnotation entry)
     {
-        entry.prefab = xmlHolder.FindFirst("id", entry.key).SAttribute("prefab");
+        XEHolder holder = xmlHolder.FindFirst("id", entry.key);
+        entry.gameObject.name = holder.SAttribute("name");
+        entry.prefab = holder.SAttribute("prefab");
     }
     public virtual string Path(string name)
     {
