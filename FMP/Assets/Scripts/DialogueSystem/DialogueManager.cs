@@ -55,6 +55,9 @@ public class DialogueManager : MonoBehaviour
         if (type == int.MinValue) type = 0;
         switch (type)
         {
+            case -1:
+                GameObject.Destroy(gameObject);
+                break;
             case 0:
                 //dialogue
                 PresentDialogue(entry);
