@@ -56,9 +56,11 @@ public class DialogueManager : MonoBehaviour
         switch (type)
         {
             case 0:
+                //dialogue
                 PresentDialogue(entry);
                 break;
             case 1:
+                //button
                 foreach (Button button in buttons)
                 {
                     if (!button.gameObject.active)
