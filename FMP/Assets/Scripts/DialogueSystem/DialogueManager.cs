@@ -8,32 +8,36 @@ using UnityEngine.UI;
 
 public class DialogueManager : MonoBehaviour
 {
+    XmlDataHolder characters;
+    XmlDataHolder currentDialogue;
     [SerializeField]
     TextMeshProUGUI nameDisplay;
     [SerializeField]
     TextMeshProUGUI contentDisplay;
     [SerializeField]
     Image display;
-    XmlDataHolder characters;
-    XmlDataHolder currentDialogue;
+    [SerializeField]
+    List<Button> buttons;
+    List<XEHolder> buttonHolders = new List<XEHolder>();
     List<XEHolder> dialogueQueue = new List<XEHolder>();
     int i = 0;
+    bool waitSelection = false;
     // Start is called before the first frame update
     void Start()
     {
         LoadCharacters();
         LoadDialogues("testingDialogue");
-        PresentDialogue(dialogueQueue[i]);
+        ProcessEntry(dialogueQueue[0]);
     }
 
     private void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) && !waitSelection)
         {
             Next();
         }
     }
-
+    #region loadData
     void LoadCharacters()
     {
         characters = new XmlDataHolder("Dialogues/Characters/characters.xml");
@@ -44,10 +48,52 @@ public class DialogueManager : MonoBehaviour
         currentDialogue = new XmlDataHolder("Dialogues/" + name + ".xml");
         dialogueQueue = currentDialogue.xmlRoot.Elements().ToList();
     }
+    #endregion
+    void ProcessEntry(XEHolder entry)
+    {
+        int type = entry.IAttribute("type");
+        if (type == int.MinValue) type = 0;
+        switch (type)
+        {
+            case 0:
+                PresentDialogue(entry);
+                break;
+            case 1:
+                foreach (Button button in buttons)
+                {
+                    if (!button.gameObject.active)
+                    {
+                        button.gameObject.GetComponentInChildren<TextMeshProUGUI>().text = entry.SAttribute("content");
+                        button.gameObject.SetActive(true);
+                        buttonHolders.Add(entry);
+                        break;
+                    }
+                }
+                waitSelection = true;
+                if (dialogueQueue[i+1].IAttribute("type") == 1)
+                {
+                    i++;
+                    Next();
+                }
+                break;
+        }
+    }
+    public void ButtonOp(int index)
+    {
+        i = buttonHolders[index].IAttribute("jumpTo");
+        waitSelection = false;
+        foreach(Button button in buttons)
+        {
+            button.gameObject.SetActive(false);
+        }
+        buttonHolders.Clear();
+        Next();
+    }
     void PresentDialogue(XEHolder entry)
     {
         XEHolder speaker = characters.FindFirst("id", entry.SAttribute("speakerId"));
         string imagePath = speaker.SAttribute("display");
+        //set speaker image
         if (imagePath != null)
         {
             Sprite sprite = Resources.Load<Sprite>(imagePath);
@@ -69,8 +115,15 @@ public class DialogueManager : MonoBehaviour
     {
         if (i <= dialogueQueue.Count - 1)
         {
-            PresentDialogue(dialogueQueue[i]);
-            i ++;
+            ProcessEntry(dialogueQueue[i]);
+            if (dialogueQueue[i].IAttribute("jumpTo") == int.MinValue)
+            {
+                i++;
+            }
+            else
+            {
+                i = dialogueQueue[i].IAttribute("jumpTo");
+            }
         }
     }
 }

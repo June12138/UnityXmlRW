@@ -49,7 +49,14 @@ public class XEHolder : XElement
     /// <returns>value of the attribute as integer</returns>
     public int IAttribute(string name)
     {
-        return int.Parse(SAttribute(name));
+        if (SAttribute(name) != null)
+        {
+            return int.Parse(SAttribute(name));
+        }
+        else
+        {
+            return int.MinValue;
+        }
     }
     /// <returns>value of the attribute as boolean, where 0 = false, everything else = true</returns>
     public bool BAttribute(string name)
