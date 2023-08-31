@@ -78,7 +78,6 @@ public class XmlDataHolder
                 }
             }
         }
-
         return result;
     }
 

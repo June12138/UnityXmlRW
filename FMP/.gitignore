@@ -71,5 +71,10 @@ crashlytics-build.properties
 /[Aa]ssets/[Ss]treamingAssets/aa.meta
 /[Aa]ssets/[Ss]treamingAssets/aa/*
 # Xml Files
-*.xml
-*.xml.meta
+/Assets/Resources/Xmls/FormationPresets2/*
+/Assets/Resources/Xmls/FormationPresets/*
+#others
+TestingScript.cs
+TestingScript.cs.meta
+*.xlsx
+*.xlsx.meta

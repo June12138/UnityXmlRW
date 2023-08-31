@@ -10,6 +10,8 @@ public class RuntimeXmlLoader : MonoBehaviour
     {
         path = savePath;
     }
+    /// <param name="entries">entries to be saved inside the .xml file</param>
+    /// <param name="name">name of the file without extension</param>
     public virtual void SaveData(List<XmlAnnotation> entries, string name)
     {
         if (name == "") return;
@@ -28,6 +30,9 @@ public class RuntimeXmlLoader : MonoBehaviour
         //edit xml elements of a game object
         return new XEHolder("entry", new XAttribute("id", entry.key), new XAttribute("name", entry.gameObject.name), new XAttribute("prefab", entry.prefab));
     }
+    /// <param name="name">name of the .xml file to load from, without file extension</param>
+    /// <param name="autoCreate">weather or not to create object when it is not found in the scene</param>
+    /// <returns>list of entries affected by the data load</returns>
     public virtual List<XmlAnnotation> LoadData(string name, bool autoCreate = false)
     {
         List<XmlAnnotation> list = new List<XmlAnnotation>();
