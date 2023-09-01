@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="1024"
+   height="1024"
+   viewBox="0 0 270.93333 270.93334"
+   version="1.1"
+   id="svg5"
+   inkscape:version="1.1.1 (3bf5ae0d25, 2021-09-20)"
+   sodipodi:docname="DialogueBackground.svg"
+   inkscape:export-filename="C:\UserDocuments\GamesDesign\UnityXmlRW\FMP\Assets\Resources\Images\background.png"
+   inkscape:export-xdpi="96"
+   inkscape:export-ydpi="96"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview7"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:document-units="mm"
+     showgrid="false"
+     units="px"
+     inkscape:zoom="0.5499273"
+     inkscape:cx="871.93343"
+     inkscape:cy="191.84354"
+     inkscape:window-width="2560"
+     inkscape:window-height="1334"
+     inkscape:window-x="-11"
+     inkscape:window-y="-11"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1" />
+  <defs
+     id="defs2">
+    <linearGradient
+       inkscape:collect="always"
+       id="linearGradient1933">
+      <stop
+         style="stop-color:#000000;stop-opacity:1;"
+         offset="0"
+         id="stop1929" />
+      <stop
+         style="stop-color:#000000;stop-opacity:0.3"
+         offset="1"
+         id="stop1931" />
+    </linearGradient>
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient1933"
+       id="linearGradient1935"
+       x1="266.1113"
+       y1="4.8220286"
+       x2="266.1113"
+       y2="289.26782"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(1.4288695,0,0,1.0262488,-58.097507,-3.5558175)" />
+    <filter
+       inkscape:collect="always"
+       style="color-interpolation-filters:sRGB"
+       id="filter3163"
+       x="-0.0091896861"
+       y="-0.01279501"
+       width="1.0183794"
+       height="1.02559">
+      <feGaussianBlur
+         inkscape:collect="always"
+         stdDeviation="0.78583264"
+         id="feGaussianBlur3165" />
+    </filter>
+  </defs>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <rect
+       style="mix-blend-mode:normal;fill:url(#linearGradient1935);fill-opacity:1;fill-rule:evenodd;stroke:#ffffff;stroke-width:3.08991;stroke-linecap:square;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;filter:url(#filter3163)"
+       id="rect850"
+       width="373.34827"
+       height="268.14777"
+       x="-51.207462"
+       y="1.3927836"
+       inkscape:export-filename="C:\UserDocuments\GamesDesign\UnityXmlRW\FMP\Assets\Resources\Images\background.png"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96"
+       transform="matrix(1.0001372,0,0,0.98498928,-0.01858789,2.0334623)" />
+  </g>
+</svg>

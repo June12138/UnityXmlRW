@@ -10,7 +10,7 @@ public class DialogueFunctionLib : MonoBehaviour
     }
     public static void Escape(string param1)
     {
-        Debug.Log("对话函数库：逃过一杰！你跑了" + param1 + "米");
+        Debug.Log("对话函数库：你吃完了答辩并逃过一杰！你跑了" + param1 + "米");
     }
     public static void End()
     {

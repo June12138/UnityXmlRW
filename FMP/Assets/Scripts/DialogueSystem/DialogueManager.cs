@@ -23,6 +23,7 @@ public class DialogueManager : MonoBehaviour
     [SerializeField]
     List<Button> buttons;
     List<XEHolder> buttonHolders = new List<XEHolder>();
+    //holding all xml elements of the current dialogue file
     List<XEHolder> dialogueQueue = new List<XEHolder>();
     //current dialogue index
     int i = 0;
@@ -119,15 +120,6 @@ public class DialogueManager : MonoBehaviour
                 break;
         }
     }
-    void CallFunction(XEHolder func, string param)
-    {
-        string[] parameters = { };
-        if (param != null) parameters = param.Split(",");
-        string name = func.SAttribute("functionName");
-        Debug.Log("当前对话触发了" + name + "函数， 其参数为" + param);
-        MethodInfo method = typeof(DialogueFunctionLib).GetMethod(name);
-        method.Invoke(this, parameters);
-    }
     public void ButtonOp(int index)
     {
         i = buttonHolders[index].IAttribute("jumpTo");
@@ -138,6 +130,15 @@ public class DialogueManager : MonoBehaviour
         }
         buttonHolders.Clear();
         Next();
+    }
+    void CallFunction(XEHolder func, string param)
+    {
+        string[] parameters = { };
+        if (param != null) parameters = param.Split(",");
+        string name = func.SAttribute("functionName");
+        Debug.Log("当前对话触发了" + name + "函数， 其参数为" + param);
+        MethodInfo method = typeof(DialogueFunctionLib).GetMethod(name);
+        method.Invoke(this, parameters);
     }
     void PresentDialogue(XEHolder entry)
     {
