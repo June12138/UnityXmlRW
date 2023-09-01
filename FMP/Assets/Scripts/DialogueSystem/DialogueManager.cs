@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Xml.Linq;
 using TMPro;
 using UnityEngine;
@@ -11,6 +12,7 @@ public class DialogueManager : MonoBehaviour
     //xml tables
     XmlDataHolder characters;
     XmlDataHolder currentDialogue;
+    XmlDataHolder functions;
     //ui elements
     [SerializeField]
     TextMeshProUGUI nameDisplay;
@@ -28,6 +30,7 @@ public class DialogueManager : MonoBehaviour
     // Start is called before the first frame update
     public void Init(string name)
     {
+        LoadFunctions();
         LoadCharacters();
         LoadDialogues(name);
         ProcessEntry(dialogueQueue[0]);
@@ -70,9 +73,18 @@ public class DialogueManager : MonoBehaviour
         currentDialogue = new XmlDataHolder("Dialogues/" + name + ".xml");
         dialogueQueue = currentDialogue.xmlRoot.Elements().ToList();
     }
+    void LoadFunctions()
+    {
+        functions = new XmlDataHolder("Dialogues/Functions/functions.xml");
+    }
     #endregion
     void ProcessEntry(XEHolder entry)
     {
+        if (entry.IAttribute("function") != int.MinValue)
+        {
+            XEHolder functionEnt = functions.FindFirst("id", entry.SAttribute("function"));
+            CallFunction(functionEnt, entry.SAttribute("param1"), entry.SAttribute("param2"));
+        }
         int type = entry.IAttribute("type");
         if (type == int.MinValue) type = 0;
         switch (type)
@@ -105,6 +117,13 @@ public class DialogueManager : MonoBehaviour
                 }
                 break;
         }
+    }
+    void CallFunction(XEHolder func, string param1, string param2)
+    {
+        string[] parameters = {param1, param2};
+        string name = func.SAttribute("functionName");
+        MethodInfo method = typeof(DialogueFunctionLib).GetMethod(name);
+        method.Invoke(this, parameters);
     }
     public void ButtonOp(int index)
     {
