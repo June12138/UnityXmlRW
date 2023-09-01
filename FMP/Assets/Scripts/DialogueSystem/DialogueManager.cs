@@ -26,7 +26,7 @@ public class DialogueManager : MonoBehaviour
     //holding all xml elements of the current dialogue file
     List<XEHolder> dialogueQueue = new List<XEHolder>();
     //current dialogue index
-    int i = 0;
+    public int i = 0;
     bool waitSelection = false;
     // Start is called before the first frame update
     public void Init(string name)

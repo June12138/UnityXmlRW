@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<dialogues>
+	<line id="0" speakerId="1" content="你好"/>
+	<line id="1" content="你是？" type="1" jumpTo="2"/>
+	<line id="2" speakerId="1" content="我是田所浩二"/>
+	<line id="3" speakerId="1" content="你也可以叫我野兽先辈"/>
+	<line id="4" speakerId="1" content="我来这里是为了帮这位狗策划测试他刚写的对话系统"/>
+	<line id="5" speakerId="1" content="你可以问我一个问题，让狗策划测试一下对话分支"/>
+	<line id="6" content="你今年多大了？" type="1" jumpTo="9"/>
+	<line id="7" content="你的职业是？" type="1" jumpTo="10"/>
+	<line id="8" content="没什么想问的了" type="1" jumpTo="12"/>
+	<line id="9" speakerId="1" content="24岁" jumpTo="11"/>
+	<line id="10" speakerId="1" content="是学生" jumpTo="11"/>
+	<line id="11" speakerId="1" content="你还有什么想问的？" jumpTo="6"/>
+	<line id="12" speakerId="1" content="你怎么知道狗策划和他三个策划队友在招人？"/>
+	<line id="13" content="？" type="1" jumpTo="14"/>
+	<line id="14" speakerId="3" content="谁问你了？"/>
+	<line id="15" speakerId="1" content="你怎么知道狗策划已经找了一个画概念的，现在缺3D美术？"/>
+	<line id="16" speakerId="1" content="你真是无所不知"/>
+	<line id="17" content="……" type="1" jumpTo="18"/>
+	<line id="18" speakerId="3" content="你这狗策划靠谱吗"/>
+	<line id="19" speakerId="1" content="当然。我们策划人均海猫水平（指头发长度）"/>
+	<line id="20" speakerId="1" content="能文能武，个个身怀绝技"/>
+	<line id="21" speakerId="1" content="你只需要会使用任意3D建模和贴图软件完成标准PBR工作流程即可"/>
+	<line id="22" speakerId="1" content="如果你很懂风格化的话，自由发挥也可以"/>
+	<line id="23" speakerId="1" content="当然，动画k帧也是要会的"/>
+	<line id="24" speakerId="1" content="关于这个，你还有什么要问的？"/>
+	<line id="25" speakerId="3" content="……"/>
+	<line id="26" content="狗策划不会压榨我吧？" type="1" jumpTo="29"/>
+	<line id="27" content="狗策划不会瞎指指点点吧？" type="1" jumpTo="31"/>
+	<line id="28" content="没什么想问的了" type="1" jumpTo="34"/>
+	<line id="29" speakerId="1" content="不会，反正你把数位板和键盘干出火星子了都不给策划算学分"/>
+	<line id="30" speakerId="1" content="他们何必为难你呢？" jumpTo="24"/>
+	<line id="31" speakerId="1" content="狗策划本人也会建模贴图动画渲染一条龙"/>
+	<line id="32" speakerId="1" content="对3D工作流程十分甚至九分得了解"/>
+	<line id="33" speakerId="1" content="你不用担心" jumpTo="24"/>
+	<line id="34" speakerId="1" content="既然没什么想问的了，那本次测试也就到此结束了"/>
+	<line id="35" speakerId="3" content="就这?"/>
+	<line id="36" speakerId="1" content="Sodayo"/>
+	<line id="37" type="-1"/>
+</dialogues>
