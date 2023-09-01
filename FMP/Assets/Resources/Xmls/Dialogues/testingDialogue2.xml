@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<dialogues>
+	<line id="0" speakerId="6" content="王爷您吉祥"/>
+	<line id="1" speakerId="6" content="奴才参见王爷"/>
+	<line id="2" speakerId="5" content="免礼金身"/>
+	<line id="3" speakerId="6" content="多日不见，王爷想小人了吗"/>
+	<line id="4" speakerId="5" content="想啊，很想啊"/>
+	<line id="5" speakerId="6" content="您毛都白了"/>
+	<line id="6" content="极霸毛" type="1" jumpTo="8"/>
+	<line id="7" content="白毛" type="1" jumpTo="9"/>
+	<line id="8" speakerId="5" content="戳啦，极霸毛嘛" jumpTo="10"/>
+	<line id="9" speakerId="5" content="戳啦，白毛嘛" jumpTo="10"/>
+	<line id="10" content="结束" type="-1"/>
+</dialogues>

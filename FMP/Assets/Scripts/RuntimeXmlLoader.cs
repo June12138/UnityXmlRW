@@ -1,5 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Xml.Linq;
+using System.IO;
+using TMPro;
 using UnityEngine;
 
 public class RuntimeXmlLoader : MonoBehaviour
@@ -87,5 +89,20 @@ public class RuntimeXmlLoader : MonoBehaviour
     public string FullPath()
     {
         return Application.dataPath + "/Resources/Xmls/" + path;
+    }
+    public static void RefreshXmlDropdown(TMP_Dropdown dropDown, string path)
+    {
+        dropDown.ClearOptions();
+        List<string> options = new List<string>();
+        string[] files = Directory.GetFiles(Application.dataPath + "/Resources/Xmls/" + path);
+        foreach (string file in files)
+        {
+            string[] split = file.Split('/')[file.Split('/').Length - 1].Split('.');
+            if (split[split.Length - 1] == "xml")
+            {
+                options.Add(split[split.Length - 2]);
+            }
+        }
+        dropDown.AddOptions(options);
     }
 }

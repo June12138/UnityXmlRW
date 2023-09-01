@@ -8,8 +8,10 @@ using UnityEngine.UI;
 
 public class DialogueManager : MonoBehaviour
 {
+    //xml tables
     XmlDataHolder characters;
     XmlDataHolder currentDialogue;
+    //ui elements
     [SerializeField]
     TextMeshProUGUI nameDisplay;
     [SerializeField]
@@ -20,16 +22,36 @@ public class DialogueManager : MonoBehaviour
     List<Button> buttons;
     List<XEHolder> buttonHolders = new List<XEHolder>();
     List<XEHolder> dialogueQueue = new List<XEHolder>();
+    //current dialogue index
     int i = 0;
     bool waitSelection = false;
     // Start is called before the first frame update
-    void Start()
+    public void Init(string name)
     {
         LoadCharacters();
-        LoadDialogues("testingDialogue");
+        LoadDialogues(name);
         ProcessEntry(dialogueQueue[0]);
     }
-
+    public static DialogueManager Instance(string name)
+    {
+        GameObject instance = Instantiate(Resources.Load("Prefabs/DialogueManager")) as GameObject;
+        DialogueManager manager = instance.GetComponent<DialogueManager>();
+        manager.Init(name);
+        if (manager.dialogueQueue.Count <= 0)
+        {
+            Debug.Log("dialogue not loaded, check file path");
+            manager.EndDialogue();
+            return null;
+        }
+        else
+        {
+            return manager;
+        }
+    }
+    public void EndDialogue()
+    {
+        GameObject.Destroy(gameObject);
+    }
     private void Update()
     {
         if (Input.GetMouseButtonDown(0) && !waitSelection)
@@ -56,14 +78,15 @@ public class DialogueManager : MonoBehaviour
         switch (type)
         {
             case -1:
-                GameObject.Destroy(gameObject);
+                //end
+                EndDialogue();
                 break;
             case 0:
                 //dialogue
                 PresentDialogue(entry);
                 break;
             case 1:
-                //button
+                //option
                 foreach (Button button in buttons)
                 {
                     if (!button.gameObject.active)

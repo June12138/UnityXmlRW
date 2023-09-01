@@ -52,18 +52,7 @@ public class XmlIngameEditor : MonoBehaviour
     }
     void RefreshDropdown()
     {
-        dropDown.ClearOptions();
-        List<string> options = new List<string>();
-        string[] files = Directory.GetFiles(loader.FullPath());
-        foreach (string file in files)
-        {
-            string[] split = file.Split('/')[file.Split('/').Length - 1].Split('.');
-            if (split[split.Length - 1] == "xml")
-            {
-                options.Add(split[split.Length - 2]);
-            }
-        }
-        dropDown.AddOptions(options);
+        RuntimeXmlLoader.RefreshXmlDropdown(dropDown, loader.path);
     }
     public void UpdateInputField(int value)
     {

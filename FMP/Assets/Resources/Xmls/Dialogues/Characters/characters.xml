@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <characters>
 	<character id="1" name="田所浩二" display="Images/senpai"/>
-	<character id="2" name="记者" display="Images/jour"/>
+	<character id="2" name="记者" display="Images/default"/>
 	<character id="3" name="你"/>
+	<character id="4" name="旁白"/>
+	<character id="5" name="王爷"/>
+	<character id="6" name="奴才" display="Images/default"/>
 </characters>
