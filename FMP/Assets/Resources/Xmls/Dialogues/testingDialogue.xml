@@ -9,7 +9,7 @@
 	<line id="6" content="吃完" type="1" jumpTo="9"/>
 	<line id="7" content="剩下" type="1" jumpTo="12"/>
 	<line id="8" content="不吃" type="1" jumpTo="10"/>
-	<line id="9" speakerId="2" content="非常得新鲜非常得美味" jumpTo="13" function="1" params="1919810"/>
+	<line id="9" speakerId="3" content="非常得新鲜，非常得美味" jumpTo="13" function="1" params="1919810"/>
 	<line id="10" speakerId="1" content="三回啊三回" function="0" params="1919,810"/>
 	<line id="11" speakerId="3" content="这这不能" jumpTo="13"/>
 	<line id="12" speakerId="3" content="这这不能" function="0" params="114,514"/>
