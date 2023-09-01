@@ -82,8 +82,9 @@ public class DialogueManager : MonoBehaviour
     {
         if (entry.IAttribute("function") != int.MinValue)
         {
+
             XEHolder functionEnt = functions.FindFirst("id", entry.SAttribute("function"));
-            CallFunction(functionEnt, entry.SAttribute("param1"), entry.SAttribute("param2"));
+            CallFunction(functionEnt, entry.SAttribute("params"));
         }
         int type = entry.IAttribute("type");
         if (type == int.MinValue) type = 0;
@@ -118,10 +119,12 @@ public class DialogueManager : MonoBehaviour
                 break;
         }
     }
-    void CallFunction(XEHolder func, string param1, string param2)
+    void CallFunction(XEHolder func, string param)
     {
-        string[] parameters = {param1, param2};
+        string[] parameters = { };
+        if (param != null) parameters = param.Split(",");
         string name = func.SAttribute("functionName");
+        Debug.Log("当前对话触发了" + name + "函数， 其参数为" + param);
         MethodInfo method = typeof(DialogueFunctionLib).GetMethod(name);
         method.Invoke(this, parameters);
     }
