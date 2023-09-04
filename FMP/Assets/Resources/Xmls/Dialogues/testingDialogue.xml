@@ -14,7 +14,7 @@
 	<line id="11" speakerId="3" content="这这不能" jumpTo="17"/>
 	<line id="12" speakerId="3" content="这这不能" function="0" params="114,514"/>
 	<line id="13" type="3" function="1" params="114"/>
-	<line id="14" type="3" function="1" params="514"/>
+	<line id="14" type="3" jumpTo="17" function="1" params="514"/>
 	<line id="15" speakerId="4" content="你跑出来了"/>
 	<line id="16" speakerId="4" content="但是，代价是什么呢？"/>
 	<line id="17" content="结束" type="-1" function="2"/>

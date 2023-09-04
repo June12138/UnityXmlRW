@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <dialogues>
 	<line id="0" speakerId="6" content="王爷您吉祥"/>
-	<line id="1" speakerId="6" content="奴才参见王爷"/>
+	<line id="1" speakerId="6" content="奴才参见王爷" varient="1"/>
 	<line id="2" speakerId="5" content="免礼金身"/>
 	<line id="3" speakerId="6" content="多日不见，王爷想小人了吗"/>
 	<line id="4" speakerId="5" content="想啊，很想啊"/>

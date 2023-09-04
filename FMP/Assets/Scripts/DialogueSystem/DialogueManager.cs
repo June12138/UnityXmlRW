@@ -35,7 +35,6 @@ public class DialogueManager : MonoBehaviour
         LoadCharacters();
         LoadDialogues(name);
         ProcessEntry(dialogueQueue[0]);
-        i++;
     }
     public static DialogueManager Instance(string name)
     {
@@ -100,7 +99,6 @@ public class DialogueManager : MonoBehaviour
         {
             case -1:
                 //end
-                Debug.Log(i);
                 EndDialogue();
                 break;
             case 0:
@@ -116,9 +114,7 @@ public class DialogueManager : MonoBehaviour
                 LoadButton(entry);
                 break;
             case 3:
-                i++;
                 Next();
-                i--;
                 break;
         }
     }
@@ -138,7 +134,6 @@ public class DialogueManager : MonoBehaviour
         //load next button if current and next entry is type 1 (continuous buttons)
         if (dialogueQueue[i + 1].IAttribute("type") == 1 && dialogueQueue[i].IAttribute("type") == 1)
         {
-            i++;
             Next();
         }
     }
@@ -151,7 +146,7 @@ public class DialogueManager : MonoBehaviour
             button.gameObject.SetActive(false);
         }
         buttonHolders.Clear();
-        Next();
+        ProcessEntry(dialogueQueue[i]);
     }
     void CallFunction(XEHolder func, string param)
     {
@@ -165,16 +160,13 @@ public class DialogueManager : MonoBehaviour
     void PresentDialogue(XEHolder entry)
     {
         XEHolder speaker = characters.FindFirst("id", entry.SAttribute("speakerId"));
+        string varient = entry.SAttribute("varient");
+        if (varient != null) varient = "_" + varient;
         string imagePath = speaker.SAttribute("display");
         //set speaker image
         if (imagePath != null)
         {
-            Sprite sprite = Resources.Load<Sprite>(imagePath);
-            //set image scale
-            float scaleX = sprite.rect.width / sprite.rect.height;
-            display.transform.localScale = new Vector2(scaleX, 1f);
-            display.sprite = sprite;
-            display.color = new Color(1f, 1f, 1f, 1f);
+            LoadImage(imagePath + varient);
         }
         else
         {
@@ -184,12 +176,23 @@ public class DialogueManager : MonoBehaviour
         nameDisplay.text = speaker.SAttribute("name");
         contentDisplay.text = content;
     }
+    void LoadImage(string path)
+    {
+        Debug.Log(path);
+        Sprite sprite = Resources.Load<Sprite>(path);
+        //set image scale
+        float scaleX = sprite.rect.width / sprite.rect.height;
+        display.transform.localScale = new Vector2(scaleX, 1f);
+        display.sprite = sprite;
+        display.color = new Color(1f, 1f, 1f, 1f);
+    }
     void Next()
     {
         if (i <= dialogueQueue.Count - 1)
         {
-            ProcessEntry(dialogueQueue[i]);
-            if (dialogueQueue[i].IAttribute("jumpTo") == int.MinValue)
+            if (dialogueQueue[i].IAttribute("jumpTo") == int.MinValue 
+                //if is continuous button, go to next
+                || (dialogueQueue[i + 1].IAttribute("type") == 1 && dialogueQueue[i].IAttribute("type") == 1))
             {
                 i++;
             }
@@ -197,6 +200,7 @@ public class DialogueManager : MonoBehaviour
             {
                 i = dialogueQueue[i].IAttribute("jumpTo");
             }
+            ProcessEntry(dialogueQueue[i]);
         }
     }
 }
