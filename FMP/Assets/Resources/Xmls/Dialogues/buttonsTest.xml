@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<dialogues>
+	<line id="0" speakerId="4" content="按钮测试"/>
+	<line id="1" speakerId="3" content="a" type="1" jumpTo="4"/>
+	<line id="2" speakerId="3" content="b" type="1" jumpTo="4"/>
+	<line id="3" content="c" type="1" jumpTo="4"/>
+	<line id="4" content="停" type="2" jumpTo="5"/>
+	<line id="5" content="停2" type="1" jumpTo="6"/>
+	<line id="6" content="stop" type="-1"/>
+</dialogues>

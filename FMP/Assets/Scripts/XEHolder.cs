@@ -62,7 +62,7 @@ public class XEHolder : XElement
     public bool BAttribute(string name)
     {
         string str = SAttribute(name);
-        if (str == "0") return false;
+        if (str == "0" || str == null) return false;
         else return true;
     }
 }

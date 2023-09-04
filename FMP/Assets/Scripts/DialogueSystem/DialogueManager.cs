@@ -35,6 +35,7 @@ public class DialogueManager : MonoBehaviour
         LoadCharacters();
         LoadDialogues(name);
         ProcessEntry(dialogueQueue[0]);
+        i++;
     }
     public static DialogueManager Instance(string name)
     {
@@ -58,7 +59,7 @@ public class DialogueManager : MonoBehaviour
     }
     private void Update()
     {
-        if (Input.GetMouseButtonDown(0) && !waitSelection)
+        if (Input.GetMouseButtonDown(0) && !(waitSelection))
         {
             Next();
         }
@@ -79,6 +80,12 @@ public class DialogueManager : MonoBehaviour
         functions = new XmlDataHolder("Dialogues/Functions/functions.xml");
     }
     #endregion
+    /*-1 = end
+     * 0 = standard conversation
+     * 1 = continuous button (auto load next button)
+     * 2 = non-continuous button
+     * 3 = empty, pass immediately but execute function
+     */
     void ProcessEntry(XEHolder entry)
     {
         if (entry.IAttribute("function") != int.MinValue)
@@ -93,6 +100,7 @@ public class DialogueManager : MonoBehaviour
         {
             case -1:
                 //end
+                Debug.Log(i);
                 EndDialogue();
                 break;
             case 0:
@@ -101,23 +109,37 @@ public class DialogueManager : MonoBehaviour
                 break;
             case 1:
                 //option
-                foreach (Button button in buttons)
-                {
-                    if (!button.gameObject.active)
-                    {
-                        button.gameObject.GetComponentInChildren<TextMeshProUGUI>().text = entry.SAttribute("content");
-                        button.gameObject.SetActive(true);
-                        buttonHolders.Add(entry);
-                        break;
-                    }
-                }
-                waitSelection = true;
-                if (dialogueQueue[i+1].IAttribute("type") == 1)
-                {
-                    i++;
-                    Next();
-                }
+                LoadButton(entry);
                 break;
+            case 2:
+                //non-continuous button
+                LoadButton(entry);
+                break;
+            case 3:
+                i++;
+                Next();
+                i--;
+                break;
+        }
+    }
+    void LoadButton(XEHolder entry)
+    {
+        foreach (Button button in buttons)
+        {
+            if (!button.gameObject.active)
+            {
+                button.gameObject.GetComponentInChildren<TextMeshProUGUI>().text = entry.SAttribute("content");
+                button.gameObject.SetActive(true);
+                buttonHolders.Add(entry);
+                break;
+            }
+        }
+        waitSelection = true;
+        //load next button if current and next entry is type 1 (continuous buttons)
+        if (dialogueQueue[i + 1].IAttribute("type") == 1 && dialogueQueue[i].IAttribute("type") == 1)
+        {
+            i++;
+            Next();
         }
     }
     public void ButtonOp(int index)
@@ -136,7 +158,7 @@ public class DialogueManager : MonoBehaviour
         string[] parameters = { };
         if (param != null) parameters = param.Split(",");
         string name = func.SAttribute("functionName");
-        Debug.Log("当前对话触发了" + name + "函数， 其参数为" + param);
+        //Debug.Log("当前对话触发了" + name + "函数， 其参数为" + param);
         MethodInfo method = typeof(DialogueFunctionLib).GetMethod(name);
         method.Invoke(this, parameters);
     }
