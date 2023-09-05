@@ -1,4 +1,4 @@
 <dialogues>
-    <line id = "" speakerId="" content="" type="" jumpTo="" function="" params="" varient=""/>
-    <line id = "" speakerId="" content="" type="" jumpTo="" function="" params="" varient=""/>
+    <line id = "" speakerId="" varient="" content="" type="" jumpTo="" function="" params=""/>
+    <line id = "" speakerId="" varient="" content="" type="" jumpTo="" function="" params=""/>
 </dialogues>

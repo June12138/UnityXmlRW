@@ -57,7 +57,7 @@ public class RuntimeXmlLoader : MonoBehaviour
         }
         return list;
     }
-    XmlAnnotation FindByID(string id)
+    static XmlAnnotation FindByID(string id)
     {
         XmlAnnotation[] annotations = GameObject.FindObjectsOfType<XmlAnnotation>();
         foreach (XmlAnnotation annotation in annotations)

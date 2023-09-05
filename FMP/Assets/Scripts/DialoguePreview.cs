@@ -11,16 +11,24 @@ public class DialoguePreview : MonoBehaviour
     [SerializeField]
     string dialogueName;
     public DialogueManager dialogueManager;
+    //Fullscreen options
+    int x;
+    int y;
     // Start is called before the first frame update
     void Start()
     {
         RefreshDropdown();
+        x = Screen.width;
+        y = Screen.height;
     }
     public void StartDialogue()
     {
-        Debug.Log("loaded " + dropDown.options[dropDown.value].text);
-        //dialogueManager = DialogueManager.Instance(dialogueName);
-        dialogueManager = DialogueManager.Instance(dropDown.options[dropDown.value].text);
+        if (dialogueManager == null)
+        {
+            Debug.Log("loaded " + dropDown.options[dropDown.value].text);
+            //dialogueManager = DialogueManager.Instance(dialogueName);
+            dialogueManager = DialogueManager.Instance(dropDown.options[dropDown.value].text);
+        }
     }
     public void EndDialogue()
     {
@@ -33,5 +41,16 @@ public class DialoguePreview : MonoBehaviour
     public void RefreshDropdown()
     {
         RuntimeXmlLoader.RefreshXmlDropdown(dropDown, "Dialogues/");
+    }
+    public void ToggleFullscreen()
+    {
+        if (Screen.fullScreen)
+        {
+            Screen.SetResolution(1024, 512, false);
+        }
+        else
+        {
+            Screen.SetResolution(x, y, true);
+        }
     }
 }

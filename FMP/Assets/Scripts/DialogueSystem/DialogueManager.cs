@@ -79,6 +79,7 @@ public class DialogueManager : MonoBehaviour
         functions = new XmlDataHolder("Dialogues/Functions/functions.xml");
     }
     #endregion
+    #region process dialogues
     /*-1 = end
      * 0 = standard conversation
      * 1 = continuous button (auto load next button)
@@ -178,8 +179,7 @@ public class DialogueManager : MonoBehaviour
     }
     void LoadImage(string path)
     {
-        Debug.Log(path);
-        Sprite sprite = Resources.Load<Sprite>(path);
+        Sprite sprite = Resources.Load<Sprite>("Images/" + path);
         //set image scale
         float scaleX = sprite.rect.width / sprite.rect.height;
         display.transform.localScale = new Vector2(scaleX, 1f);
@@ -203,4 +203,5 @@ public class DialogueManager : MonoBehaviour
             ProcessEntry(dialogueQueue[i]);
         }
     }
+    #endregion
 }
