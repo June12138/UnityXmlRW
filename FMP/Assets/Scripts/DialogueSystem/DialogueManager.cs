@@ -68,8 +68,10 @@ public class DialogueManager : MonoBehaviour, IPointerClickHandler
         int linkIndex = TMP_TextUtilities.FindIntersectingLink(contentDisplay, Input.mousePosition, null);
         if (linkIndex != -1)
         {
+            string text = contentDisplay.textInfo.linkInfo[linkIndex].GetLinkText();
             string linkId = contentDisplay.textInfo.linkInfo[linkIndex].GetLinkID();
-            StartAnnotation(annotations.FindFirst("id", linkId).SAttribute("content"));
+            string content = annotations.FindFirst("id", linkId).SAttribute("content");
+            StartAnnotation($"{text}: {content}");
         }
         else{
             EndAnnotation();
@@ -88,7 +90,7 @@ public class DialogueManager : MonoBehaviour, IPointerClickHandler
     #region loadData
     void LoadCharacters()
     {
-        characters = new XmlDataHolder("Dialogues/Characters/characters.xml");
+        characters = new XmlDataHolder("Dialogues/Maps/characters.xml");
         
     }
     void LoadDialogues(string name)
@@ -98,11 +100,11 @@ public class DialogueManager : MonoBehaviour, IPointerClickHandler
     }
     void LoadFunctions()
     {
-        functions = new XmlDataHolder("Dialogues/Functions/functions.xml");
+        functions = new XmlDataHolder("Dialogues/Maps/functions.xml");
     }
     void LoadAnnotation()
     {
-        annotations = new XmlDataHolder("Dialogues/Annotations/annotations.xml");
+        annotations = new XmlDataHolder("Dialogues/Maps/annotations.xml");
     }
     #endregion
     #region process dialogues

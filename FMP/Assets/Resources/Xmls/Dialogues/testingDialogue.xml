@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <dialogues>
-	<line id="0" speakerId="4" content="&lt;u&gt;&lt;link=&quot;0&quot;&gt;野兽先辈&lt;/link&gt;&lt;/u&gt;的会员制餐厅，就是你的所在之处了"/>
+	<line id="0" speakerId="4" content="&lt;u&gt;&lt;link=&quot;0&quot;&gt;野兽先辈&lt;/link&gt;&lt;/u&gt;的&lt;u&gt;&lt;link=&quot;1&quot;&gt;会员制餐厅&lt;/link&gt;&lt;/u&gt;，就是你的所在之处了"/>
 	<line id="1" speakerId="1" content="&lt;color=#FF0000&gt;压力马斯内&lt;/color&gt;"/>
 	<line id="2" speakerId="1" content="24岁，事学生"/>
 	<line id="3" speakerId="2" content="你是一个一个一个正在编程的学生啊啊啊啊"/>

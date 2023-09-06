@@ -18,15 +18,15 @@ public class DialoguePreview : MonoBehaviour
     void Start()
     {
         RefreshDropdown();
-        x = Screen.width;
-        y = Screen.height;
+        
+        x = Display.main.systemWidth;
+        y = Display.main.systemHeight;
     }
     public void StartDialogue()
     {
         if (dialogueManager == null)
         {
-            Debug.Log("loaded " + dropDown.options[dropDown.value].text);
-            //dialogueManager = DialogueManager.Instance(dialogueName);
+            //Debug.Log("loaded " + dropDown.options[dropDown.value].text);
             dialogueManager = DialogueManager.Instance(dropDown.options[dropDown.value].text);
         }
     }
