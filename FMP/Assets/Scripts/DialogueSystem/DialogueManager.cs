@@ -5,19 +5,23 @@ using System.Reflection;
 using System.Xml.Linq;
 using TMPro;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class DialogueManager : MonoBehaviour
+public class DialogueManager : MonoBehaviour, IPointerClickHandler
 {
     //xml tables
     XmlDataHolder characters;
     XmlDataHolder currentDialogue;
     XmlDataHolder functions;
+    XmlDataHolder annotations;
     //ui elements
     [SerializeField]
     TextMeshProUGUI nameDisplay;
     [SerializeField]
     TextMeshProUGUI contentDisplay;
+    [SerializeField]
+    GameObject annotation;
     [SerializeField]
     Image display;
     [SerializeField]
@@ -35,6 +39,8 @@ public class DialogueManager : MonoBehaviour
         LoadCharacters();
         LoadDialogues(name);
         ProcessEntry(dialogueQueue[0]);
+        LoadAnnotation();
+        //contentDisplay.textInfo.linkInfo[0];
     }
     public static DialogueManager Instance(string name)
     {
@@ -56,13 +62,29 @@ public class DialogueManager : MonoBehaviour
     {
         GameObject.Destroy(gameObject);
     }
-    private void Update()
+    #region process annotations
+    public void OnPointerClick(PointerEventData eventData)
     {
-        if (Input.GetMouseButtonDown(0) && !(waitSelection))
+        int linkIndex = TMP_TextUtilities.FindIntersectingLink(contentDisplay, Input.mousePosition, null);
+        if (linkIndex != -1)
         {
-            Next();
+            string linkId = contentDisplay.textInfo.linkInfo[linkIndex].GetLinkID();
+            StartAnnotation(annotations.FindFirst("id", linkId).SAttribute("content"));
+        }
+        else{
+            EndAnnotation();
         }
     }
+    void StartAnnotation(string anno)
+    {
+        annotation.SetActive(true);
+        annotation.GetComponentInChildren<TextMeshProUGUI>().text = anno;
+    }
+    void EndAnnotation()
+    {
+        annotation.SetActive(false);
+    }
+    #endregion
     #region loadData
     void LoadCharacters()
     {
@@ -77,6 +99,10 @@ public class DialogueManager : MonoBehaviour
     void LoadFunctions()
     {
         functions = new XmlDataHolder("Dialogues/Functions/functions.xml");
+    }
+    void LoadAnnotation()
+    {
+        annotations = new XmlDataHolder("Dialogues/Annotations/annotations.xml");
     }
     #endregion
     #region process dialogues
@@ -202,6 +228,11 @@ public class DialogueManager : MonoBehaviour
             }
             ProcessEntry(dialogueQueue[i]);
         }
+    }
+    public void NextButton()
+    {
+        if (waitSelection) return;
+        else Next();
     }
     #endregion
 }
