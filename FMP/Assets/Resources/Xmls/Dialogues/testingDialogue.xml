@@ -4,7 +4,7 @@
 	<line id="1" speakerId="1" content="&lt;color=#FF0000&gt;压力马斯内&lt;/color&gt;"/>
 	<line id="2" speakerId="1" content="24岁，事学生"/>
 	<line id="3" speakerId="2" content="你是一个一个一个正在编程的学生啊啊啊啊"/>
-	<line id="4" speakerId="1" content="&lt;color=#FF0000&gt;哼，哼，哼，哼啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊&lt;/color&gt;"/>
+	<line id="4" speakerId="1" content="&lt;color=#FF0000&gt;哼，哼，哼啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊&lt;/color&gt;"/>
 	<line id="5" speakerId="2" content="吃完了有奖励，吃不完有惩罚"/>
 	<line id="6" content="吃完" type="1" jumpTo="9"/>
 	<line id="7" content="剩下" type="1" jumpTo="12"/>
@@ -14,7 +14,7 @@
 	<line id="11" speakerId="3" content="这这不能" jumpTo="17"/>
 	<line id="12" speakerId="3" content="这这不能" function="0" params="114,514"/>
 	<line id="13" type="3" function="1" params="114"/>
-	<line id="14" type="3" jumpTo="17" function="1" params="514"/>
+	<line id="14" type="3" jumpTo="15" function="1" params="514"/>
 	<line id="15" speakerId="4" content="你跑出来了"/>
 	<line id="16" speakerId="4" content="但是，代价是什么呢？"/>
 	<line id="17" content="结束" type="-1" function="2"/>

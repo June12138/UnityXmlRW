@@ -146,6 +146,15 @@ public class DialogueManager : MonoBehaviour, IPointerClickHandler
                 Next();
                 break;
         }
+        //if next is empty, go next
+        if (GetNextIndex(i) < dialogueQueue.Count)
+        {
+            if (dialogueQueue[GetNextIndex(i)].IAttribute("type") == 3 && type != 3)
+            {
+                Debug.Log("empty");
+                Next();
+            }
+        }
     }
     void LoadButton(XEHolder entry)
     {
@@ -214,13 +223,25 @@ public class DialogueManager : MonoBehaviour, IPointerClickHandler
         display.sprite = sprite;
         display.color = new Color(1f, 1f, 1f, 1f);
     }
+    int GetNextIndex(int i)
+    {
+        if (dialogueQueue[i].IAttribute("jumpTo") == int.MinValue)
+        {
+            return i + 1;
+        }
+        else
+        {
+            return dialogueQueue[i].IAttribute("jumpTo");
+        }
+    }
     void Next()
     {
         if (i <= dialogueQueue.Count - 1)
         {
             if (dialogueQueue[i].IAttribute("jumpTo") == int.MinValue 
                 //if is continuous button, go to next
-                || (dialogueQueue[i + 1].IAttribute("type") == 1 && dialogueQueue[i].IAttribute("type") == 1))
+                || (dialogueQueue[i + 1].IAttribute("type") == 1 && dialogueQueue[i].IAttribute("type") == 1)
+                )
             {
                 i++;
             }
