@@ -90,21 +90,21 @@ public class DialogueManager : MonoBehaviour, IPointerClickHandler
     #region loadData
     void LoadCharacters()
     {
-        characters = new XmlDataHolder("Dialogues/Maps/characters.xml");
+        characters = new XmlDataHolder("Dialogues/Maps/characters");
         
     }
     void LoadDialogues(string name)
     {
-        currentDialogue = new XmlDataHolder("Dialogues/" + name + ".xml");
+        currentDialogue = new XmlDataHolder("Dialogues/" + name, fromResources:false);
         dialogueQueue = currentDialogue.xmlRoot.Elements().ToList();
     }
     void LoadFunctions()
     {
-        functions = new XmlDataHolder("Dialogues/Maps/functions.xml");
+        functions = new XmlDataHolder("Dialogues/Maps/functions");
     }
     void LoadAnnotation()
     {
-        annotations = new XmlDataHolder("Dialogues/Maps/annotations.xml");
+        annotations = new XmlDataHolder("Dialogues/Maps/annotations");
     }
     #endregion
     #region process dialogues

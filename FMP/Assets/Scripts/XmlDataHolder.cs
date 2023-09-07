@@ -8,31 +8,48 @@ public class XmlDataHolder
     public string environmentLocation;
     public XEHolder xmlRoot;
     public string path;
-    ///<param name="xmlPath">path to the .xml file, under environmentLocation</param>
+    ///<param name="xmlName">path to the .xml file (without .xml extension), under environmentLocation</param>
     ///<param name="autoCreate">when set to true, create .xml file in that path if file is not found</param>
     ///<param name="rootName">name of the root element when creating .xml file. Set to "xml" by default</param>
-    public XmlDataHolder(string xmlPath, bool autoCreate = false, string rootName = "xml")
+    ///<param name="fromResources">load from unity resources or directly from file path. When set to resources, nothing will update at runtime</param>
+    public XmlDataHolder(string xmlName, bool autoCreate = false, string rootName = "xml", bool fromResources = true)
     {
         environmentLocation = Application.dataPath + "/Resources/Xmls/";
         XDocument xmlDocument = new XDocument();
-        path = environmentLocation + xmlPath;
-        try
+        path = environmentLocation + xmlName + ".xml";
+        if((fromResources && Resources.Load("Xmls/" + xmlName)) 
+            || (!fromResources && System.IO.File.Exists(path))
+        )
         {
-            xmlDocument = XDocument.Load(path);
+            //Debug.Log(XDocument.Load(path));
+            LoadFile();
             xmlRoot = ConvertToXEHolder(xmlDocument.Root);
         }
-        catch
+        else
         {
             if (autoCreate)
             {
                 XDocument doc = new XDocument();
                 doc.Add(new XElement(rootName));
                 doc.Save(path);
-                xmlDocument = XDocument.Load(path);
+                LoadFile();
                 xmlRoot = ConvertToXEHolder(xmlDocument.Root);
             }
         }
+        void LoadFile()
+        {
+            if (fromResources)
+            {
+                TextAsset xmlText = (TextAsset)Resources.Load("Xmls/" + xmlName, typeof(TextAsset));
+                xmlDocument = XDocument.Parse(xmlText.text);
+            }
+            else
+            {
+                xmlDocument = XDocument.Load(path);
+            }
+        }
     }
+
     //converts everything under and including last to XEHolder
     XEHolder ConvertToXEHolder(XElement last)
     {

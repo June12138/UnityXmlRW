@@ -17,7 +17,7 @@ public class RuntimeXmlLoader : MonoBehaviour
     public virtual void SaveData(List<XmlAnnotation> entries, string name)
     {
         if (name == "") return;
-        xmlHolder = new XmlDataHolder(Path(name), true);
+        xmlHolder = new XmlDataHolder(Path(name), true, fromResources:false);
         xmlHolder.ClearData();
         foreach (XmlAnnotation entry in entries)
         {
@@ -39,7 +39,7 @@ public class RuntimeXmlLoader : MonoBehaviour
     {
         List<XmlAnnotation> list = new List<XmlAnnotation>();
         if (name == "") return list;
-        xmlHolder = new XmlDataHolder(Path(name));
+        xmlHolder = new XmlDataHolder(Path(name), fromResources:false);
         foreach (XEHolder el in xmlHolder.xmlRoot.Elements())
         {
             XmlAnnotation entry = FindByID(el.SAttribute("id"));
@@ -84,11 +84,11 @@ public class RuntimeXmlLoader : MonoBehaviour
     }
     public virtual string Path(string name)
     {
-        return path + name + ".xml";
+        return path + name;
     }
     public string FullPath()
     {
-        return Application.dataPath + "/Resources/Xmls/" + path;
+        return Application.dataPath + "/Resources/Xmls/" + path + ".xml";
     }
     public static void RefreshXmlDropdown(TMP_Dropdown dropDown, string path)
     {
