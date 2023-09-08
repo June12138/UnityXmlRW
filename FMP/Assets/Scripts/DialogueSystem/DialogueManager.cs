@@ -32,6 +32,7 @@ public class DialogueManager : MonoBehaviour, IPointerClickHandler
     //current dialogue index
     public int i = 0;
     bool waitSelection = false;
+    public string interpolation = "";
     // Start is called before the first frame update
     public void Init(string name)
     {
@@ -212,6 +213,7 @@ public class DialogueManager : MonoBehaviour, IPointerClickHandler
         }
         string content = entry.SAttribute("content");
         nameDisplay.text = speaker.SAttribute("name");
+        content = content.Replace("{i}", interpolation);
         contentDisplay.text = content;
     }
     void LoadImage(string path)

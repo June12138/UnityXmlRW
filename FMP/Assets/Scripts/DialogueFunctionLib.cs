@@ -20,4 +20,14 @@ public class DialogueFunctionLib : MonoBehaviour
     {
         Debug.Log("¶Ô»°º¯Êý¿â£º" + message);
     }
+    public static void Ii()
+    {
+        DialogueManager dm = GetDM();
+        dm.interpolation = dm.i.ToString();
+    }
+    static DialogueManager GetDM()
+    {
+        DialogueManager dm = GameObject.FindObjectOfType<DialogueManager>();
+        return dm;
+    }
 }

@@ -4,4 +4,5 @@
 	<line id="1" functionName="Escape"/>
 	<line id="2" functionName="End"/>
 	<line id="3" functionName="Log"/>
+	<line id="4" functionName="Ii"/>
 </functions>

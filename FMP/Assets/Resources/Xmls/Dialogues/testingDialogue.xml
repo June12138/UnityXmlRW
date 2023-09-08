@@ -1,21 +1,22 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <dialogues>
-	<line id="0" speakerId="4" content="&lt;u&gt;&lt;link=&quot;0&quot;&gt;野兽先辈&lt;/link&gt;&lt;/u&gt;的&lt;u&gt;&lt;link=&quot;1&quot;&gt;会员制餐厅&lt;/link&gt;&lt;/u&gt;，就是你的所在之处了"/>
-	<line id="1" speakerId="1" content="&lt;color=#FF0000&gt;压力马斯内&lt;/color&gt;"/>
-	<line id="2" speakerId="1" content="24岁，事学生"/>
-	<line id="3" speakerId="2" content="你是一个一个一个正在编程的学生啊啊啊啊"/>
-	<line id="4" speakerId="1" content="&lt;color=#FF0000&gt;哼，哼，哼啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊&lt;/color&gt;"/>
-	<line id="5" speakerId="2" content="吃完了有奖励，吃不完有惩罚"/>
-	<line id="6" content="吃完" type="1" jumpTo="9"/>
-	<line id="7" content="剩下" type="1" jumpTo="12"/>
-	<line id="8" content="不吃" type="1" jumpTo="10"/>
-	<line id="9" speakerId="3" content="非常得新鲜，非常得美味" jumpTo="17" function="1" params="1919810"/>
-	<line id="10" speakerId="1" content="三回啊三回" function="0" params="1919,810"/>
-	<line id="11" speakerId="3" content="这这不能" jumpTo="17"/>
-	<line id="12" speakerId="3" content="这这不能" function="0" params="114,514"/>
-	<line id="13" type="3" function="1" params="114"/>
-	<line id="14" type="3" jumpTo="15" function="1" params="514"/>
-	<line id="15" speakerId="4" content="你跑出来了"/>
-	<line id="16" speakerId="4" content="但是，代价是什么呢？"/>
-	<line id="17" content="结束" type="-1" function="2"/>
+	<line id="0" speakerId="4" content="{i}" function="4"/>
+	<line id="1" speakerId="4" content="&lt;u&gt;&lt;link=&quot;0&quot;&gt;野兽先辈&lt;/link&gt;&lt;/u&gt;的&lt;u&gt;&lt;link=&quot;1&quot;&gt;会员制餐厅&lt;/link&gt;&lt;/u&gt;，就是你的所在之处了"/>
+	<line id="2" speakerId="1" content="&lt;color=#FF0000&gt;压力马斯内&lt;/color&gt;"/>
+	<line id="3" speakerId="1" content="24岁，事学生"/>
+	<line id="4" speakerId="2" content="你是一个一个一个正在编程的学生啊啊啊啊"/>
+	<line id="5" speakerId="1" content="&lt;color=#FF0000&gt;哼，哼，哼啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊&lt;/color&gt;"/>
+	<line id="6" speakerId="2" content="吃完了有奖励，吃不完有惩罚"/>
+	<line id="7" content="吃完" type="1" jumpTo="10"/>
+	<line id="8" content="剩下" type="1" jumpTo="13"/>
+	<line id="9" content="不吃" type="1" jumpTo="11"/>
+	<line id="10" speakerId="3" content="非常得新鲜，非常得美味" jumpTo="18" function="1" params="1919810"/>
+	<line id="11" speakerId="1" content="三回啊三回" function="0" params="1919,810"/>
+	<line id="12" speakerId="3" content="这这不能" jumpTo="18"/>
+	<line id="13" speakerId="3" content="这这不能" function="0" params="114,514"/>
+	<line id="14" type="3" function="1" params="114"/>
+	<line id="15" type="3" jumpTo="16" function="1" params="514"/>
+	<line id="16" speakerId="4" content="你跑出来了"/>
+	<line id="17" speakerId="4" content="但是，代价是什么呢？"/>
+	<line id="18" content="结束" type="-1" function="2"/>
 </dialogues>
