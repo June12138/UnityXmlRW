@@ -32,7 +32,7 @@ public class DialogueManager : MonoBehaviour, IPointerClickHandler
     //current dialogue index
     public int i = 0;
     bool waitSelection = false;
-    public string interpolation = "";
+    public string[] interpolations = new string[5];
     // Start is called before the first frame update
     public void Init(string name)
     {
@@ -150,9 +150,11 @@ public class DialogueManager : MonoBehaviour, IPointerClickHandler
         //if next is empty, go next
         if (GetNextIndex(i) < dialogueQueue.Count)
         {
-            if (dialogueQueue[GetNextIndex(i)].IAttribute("type") == 3 && type != 3)
+            if (dialogueQueue[GetNextIndex(i)].IAttribute("type") == 3 
+                && (type == 0)
+                && (i != 0)
+            )
             {
-                Debug.Log("empty");
                 Next();
             }
         }
@@ -213,7 +215,11 @@ public class DialogueManager : MonoBehaviour, IPointerClickHandler
         }
         string content = entry.SAttribute("content");
         nameDisplay.text = speaker.SAttribute("name");
-        content = content.Replace("{i}", interpolation);
+        //replace interpolations
+        for (int i = 0; i < interpolations.Length; i++)
+        {
+            content = content.Replace("{" + i.ToString() + "}", interpolations[i]);
+        }
         contentDisplay.text = content;
     }
     void LoadImage(string path)

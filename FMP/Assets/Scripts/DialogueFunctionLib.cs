@@ -20,10 +20,17 @@ public class DialogueFunctionLib : MonoBehaviour
     {
         Debug.Log("¶Ô»°º¯Êý¿â£º" + message);
     }
-    public static void Ii()
+    public static void Ii(string replace)
     {
+        int index = int.Parse(replace);
         DialogueManager dm = GetDM();
-        dm.interpolation = dm.i.ToString();
+        dm.interpolations[index] = dm.i.ToString();
+    }
+    public static void Interpolate(string replace, string text)
+    {
+        int index = int.Parse(replace);
+        DialogueManager dm = GetDM();
+        dm.interpolations[index] = text;
     }
     static DialogueManager GetDM()
     {
