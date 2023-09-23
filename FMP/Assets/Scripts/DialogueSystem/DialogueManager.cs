@@ -23,6 +23,8 @@ public class DialogueManager : MonoBehaviour, IPointerClickHandler
     [SerializeField]
     GameObject annotation;
     [SerializeField]
+    Animator animator;
+    [SerializeField]
     Image display;
     [SerializeField]
     List<Button> buttons;
@@ -33,6 +35,8 @@ public class DialogueManager : MonoBehaviour, IPointerClickHandler
     public int i = 0;
     bool waitSelection = false;
     public string[] interpolations = new string[5];
+    //determine if is typing richtext tags. If so, skip through 
+    bool isTypingRichtext;
     // Start is called before the first frame update
     public void Init(string name)
     {
@@ -41,6 +45,7 @@ public class DialogueManager : MonoBehaviour, IPointerClickHandler
         LoadDialogues(name);
         ProcessEntry(dialogueQueue[0]);
         LoadAnnotation();
+        animator.Play("StartDialogue");
         //contentDisplay.textInfo.linkInfo[0];
     }
     public static DialogueManager Instance(string name)
@@ -60,6 +65,10 @@ public class DialogueManager : MonoBehaviour, IPointerClickHandler
         }
     }
     public void EndDialogue()
+    {
+        animator.Play("EndDialogue");
+    }
+    public void DestroyObject()
     {
         GameObject.Destroy(gameObject);
     }
@@ -220,7 +229,27 @@ public class DialogueManager : MonoBehaviour, IPointerClickHandler
         {
             content = content.Replace("{" + i.ToString() + "}", interpolations[i]);
         }
-        contentDisplay.text = content;
+        StopAllCoroutines();
+        StartCoroutine(TypeContent(content));
+        //contentDisplay.text = content;
+    }
+    IEnumerator TypeContent(string content)
+    {
+        contentDisplay.text = "";
+        foreach (char c in content.ToCharArray())
+        {
+            if (c == '<' || isTypingRichtext)
+            {
+                isTypingRichtext = true;
+                contentDisplay.text += c;
+                if (c == '>') isTypingRichtext = false;
+            }
+            else
+            {
+                contentDisplay.text += c;
+                yield return new WaitForSeconds(0.01f);
+            }
+        }
     }
     void LoadImage(string path)
     {

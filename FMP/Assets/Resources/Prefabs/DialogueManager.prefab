@@ -370,7 +370,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 651342047249918645}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -380,12 +380,12 @@ RectTransform:
   - {fileID: 651342048730750156}
   - {fileID: 651342048275599121}
   - {fileID: 1922123919632611826}
-  m_Father: {fileID: 651342048129114678}
-  m_RootOrder: 2
+  m_Father: {fileID: 651342048207439825}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -82.473, y: 26}
+  m_AnchoredPosition: {x: -82.4729, y: 26}
   m_SizeDelta: {x: -234.947, y: 380}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!222 &651342047249918642
@@ -765,6 +765,7 @@ GameObject:
   m_Component:
   - component: {fileID: 651342047804255353}
   - component: {fileID: 651342047804255354}
+  - component: {fileID: 6932200823472030033}
   m_Layer: 0
   m_Name: DialogueManager
   m_TagString: Untagged
@@ -803,12 +804,39 @@ MonoBehaviour:
   nameDisplay: {fileID: 651342047112435082}
   contentDisplay: {fileID: 651342047249918643}
   annotation: {fileID: 7353311818559013135}
+  animator: {fileID: 6932200823472030033}
   display: {fileID: 651342046900814492}
   buttons:
   - {fileID: 651342047185155110}
   - {fileID: 651342048275599120}
   - {fileID: 651342048730750155}
   i: 0
+  interpolations:
+  - 
+  - 
+  - 
+  - 
+  - 
+--- !u!95 &6932200823472030033
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 651342047804255355}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: bd9ca8f394f5c284b81db449cb7a441c, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &651342048129114682
 GameObject:
   m_ObjectHideFlags: 0
@@ -842,7 +870,6 @@ RectTransform:
   m_Children:
   - {fileID: 651342046900814493}
   - {fileID: 651342048207439825}
-  - {fileID: 651342047249918644}
   m_Father: {fileID: 651342047804255353}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -943,6 +970,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5508714160803047867}
+  - {fileID: 651342047249918644}
   m_Father: {fileID: 651342048129114678}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
