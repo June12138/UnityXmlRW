@@ -35,8 +35,6 @@ public class DialogueManager : MonoBehaviour, IPointerClickHandler
     public int i = 0;
     bool waitSelection = false;
     public string[] interpolations = new string[5];
-    //determine if is typing richtext tags. If so, skip through 
-    bool isTypingRichtext;
     // Start is called before the first frame update
     public void Init(string name)
     {
@@ -209,6 +207,7 @@ public class DialogueManager : MonoBehaviour, IPointerClickHandler
     }
     void PresentDialogue(XEHolder entry)
     {
+        //retrieve speaker info
         XEHolder speaker = characters.FindFirst("id", entry.SAttribute("speakerId"));
         string varient = entry.SAttribute("varient");
         if (varient != null) varient = "_" + varient;
@@ -231,23 +230,25 @@ public class DialogueManager : MonoBehaviour, IPointerClickHandler
         }
         StopAllCoroutines();
         StartCoroutine(TypeContent(content));
-        //contentDisplay.text = content;
-    }
-    IEnumerator TypeContent(string content)
-    {
-        contentDisplay.text = "";
-        foreach (char c in content.ToCharArray())
+        //typewriter effect
+        IEnumerator TypeContent(string content)
         {
-            if (c == '<' || isTypingRichtext)
+            //is typing richtext tags? If so, skip through 
+            bool isTypingRichtext = false;
+            contentDisplay.text = "";
+            foreach (char c in content.ToCharArray())
             {
-                isTypingRichtext = true;
-                contentDisplay.text += c;
-                if (c == '>') isTypingRichtext = false;
-            }
-            else
-            {
-                contentDisplay.text += c;
-                yield return new WaitForSeconds(0.01f);
+                if (c == '<' || isTypingRichtext)
+                {
+                    isTypingRichtext = true;
+                    contentDisplay.text += c;
+                    if (c == '>') isTypingRichtext = false;
+                }
+                else
+                {
+                    contentDisplay.text += c;
+                    yield return new WaitForSeconds(0.02f);
+                }
             }
         }
     }
