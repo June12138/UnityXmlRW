@@ -17,18 +17,23 @@ public class DialoguePreview : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+
         RefreshDropdown();
         
         x = Display.main.systemWidth;
         y = Display.main.systemHeight;
     }
-    public void StartDialogue()
+    public void StartDialogue(string name)
     {
         if (dialogueManager == null)
         {
             //Debug.Log("loaded " + dropDown.options[dropDown.value].text);
-            dialogueManager = DialogueManager.Instance(dropDown.options[dropDown.value].text);
+            dialogueManager = DialogueManager.Instance(name);
         }
+    }
+    public void StartButton()
+    {
+        StartDialogue(dropDown.options[dropDown.value].text);
     }
     public void EndDialogue()
     {
@@ -40,7 +45,7 @@ public class DialoguePreview : MonoBehaviour
     // Update is called once per frame
     public void RefreshDropdown()
     {
-        RuntimeXmlLoader.RefreshXmlDropdown(dropDown, "Dialogues/");
+        if (dropDown) RuntimeXmlLoader.RefreshXmlDropdown(dropDown, "Dialogues/");
     }
     public void ToggleFullscreen()
     {

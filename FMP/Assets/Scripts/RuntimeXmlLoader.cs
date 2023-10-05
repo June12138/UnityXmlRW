@@ -92,7 +92,10 @@ public class RuntimeXmlLoader : MonoBehaviour
     }
     public static void RefreshXmlDropdown(TMP_Dropdown dropDown, string path)
     {
-        dropDown.ClearOptions();
+        if (dropDown)
+        {
+            dropDown.ClearOptions();
+        }
         List<string> options = new List<string>();
         string[] files = Directory.GetFiles(Application.dataPath + "/Resources/Xmls/" + path);
         foreach (string file in files)

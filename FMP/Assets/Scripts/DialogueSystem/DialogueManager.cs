@@ -103,7 +103,7 @@ public class DialogueManager : MonoBehaviour, IPointerClickHandler
     }
     void LoadDialogues(string name)
     {
-        currentDialogue = new XmlDataHolder("Dialogues/" + name, fromResources:false);
+        currentDialogue = new XmlDataHolder("Dialogues/" + name, fromResources:true);
         dialogueQueue = currentDialogue.xmlRoot.Elements().ToList();
     }
     void LoadFunctions()

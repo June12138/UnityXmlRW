@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<dialogues>
+	<line id="0" speakerId="7" content="1+1=?"/>
+	<line id="1" content="2" type="1" jumpTo="4"/>
+	<line id="2" content="3" type="1" jumpTo="5"/>
+	<line id="3" content="4" type="1" jumpTo="6"/>
+	<line id="4" speakerId="8" content="2" jumpTo="7"/>
+	<line id="5" speakerId="8" content="3" jumpTo="8"/>
+	<line id="6" speakerId="8" content="4" jumpTo="8"/>
+	<line id="7" speakerId="7" content="Correct" jumpTo="12"/>
+	<line id="8" speakerId="7" content="&lt;color=#FF0000&gt;Wrong!!!&lt;/color&gt;"/>
+	<line id="9" speakerId="7" content="Try again?"/>
+	<line id="10" content="Yes" type="1" jumpTo="0"/>
+	<line id="11" content="No" type="1" jumpTo="12"/>
+	<line id="12" speakerId="7" content="Dialogue will &lt;u&gt;&lt;link=&quot;2&quot;&gt;close&lt;/link&gt;&lt;/u&gt; on next"/>
+	<line id="13" type="-1"/>
+</dialogues>

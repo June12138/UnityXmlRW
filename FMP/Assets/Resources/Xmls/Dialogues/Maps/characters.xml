@@ -6,4 +6,6 @@
 	<character id="4" name="旁白"/>
 	<character id="5" name="王爷"/>
 	<character id="6" name="奴才" display="default"/>
+	<character id="7" name="Game Master" display="default"/>
+	<character id="8" name="You"/>
 </characters>

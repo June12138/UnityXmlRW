@@ -1931,7 +1931,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 2010808884}
         m_TargetAssemblyTypeName: DialoguePreview, Assembly-CSharp
-        m_MethodName: StartDialogue
+        m_MethodName: StartButton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
